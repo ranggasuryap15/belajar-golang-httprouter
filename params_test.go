@@ -16,7 +16,7 @@ func TestParams(t *testing.T) {
 	router.GET("/products/:id", func(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 		id := params.ByName("id")
 		text := "Product " + id
-		fmt.Fprintf(writer, text)
+		fmt.Fprint(writer, text)
 	})
 
 	request := httptest.NewRequest("GET", "http://localhost:3000/products/1", nil)
