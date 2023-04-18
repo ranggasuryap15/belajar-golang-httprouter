@@ -17,7 +17,7 @@ func TestRouterPattern(t *testing.T) {
 		id := params.ByName("id")
 		itemId := params.ByName("itemId")
 		text := "Product " + id + " Item " + itemId
-		fmt.Fprintf(writer, text)
+		fmt.Fprint(writer, text)
 	})
 
 	request := httptest.NewRequest("GET", "http://localhost:3000/products/1/items/1", nil)
@@ -36,7 +36,7 @@ func TestPatternCatchAllParameter(t *testing.T) {
 	router.GET("/images/*image", func(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 		image := params.ByName("image")
 		text := "Image : " + image
-		fmt.Fprintf(writer, text)
+		fmt.Fprint(writer, text)
 	})
 
 	request := httptest.NewRequest("GET", "http://localhost:3000/images/small/profile.png", nil)
